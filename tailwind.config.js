@@ -9,6 +9,9 @@ module.exports = {
     fontFamily: {
       sans: ['Roboto', 'Helvetica Neue', 'Helvetica Neue'],
       header: ['Playfair', 'ui-serif', 'Georgia', 'Cambria', '"Times New Roman"', 'Times', 'serif']
+    },
+    spacing: {
+      160: '40rem'
     }
   },
   plugins: []
