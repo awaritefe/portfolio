@@ -33,3 +33,9 @@ export default {
   }
 }
 </script>
+
+<style scoped lang="scss">
+li a {
+  @extend %button;
+}
+</style>

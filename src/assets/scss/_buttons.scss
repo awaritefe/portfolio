@@ -1,0 +1,15 @@
+%button {
+  display: block;
+  align-self: end;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  background-color: #0d0d0d;
+  padding: 0.7rem;
+  border-radius: 10px;
+}
+
+.button {
+  @extend %button;
+}
