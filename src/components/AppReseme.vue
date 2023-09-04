@@ -3,11 +3,11 @@
     <div class="modal-content m-auto w-fit">
       <!-- Modal close button -->
       <div class="modal-close cursor-pointer ml-auto w-fit z-50">
-        <i class="fas fa-times text-white" @click.prevent="isOpen = false"></i>
+        <i class="fas fa-times text-white" @click.prevent="modalVisibility = false"></i>
       </div>
       <!-- Iframe/Embed -->
       <iframe
-        class="m-auto h-[80vh] w-[90vw] md:w-160"
+        class="m-auto h-[80vh] w-[90vw] md:w-[40rem]"
         src="https://drive.google.com/file/d/1sxLXiU3UrDubPX2V7F2G2fy1MmaExbSG/preview"
         frameBorder="0"
         scrolling="auto"
@@ -27,7 +27,9 @@ export default {
   name: 'AppReseme',
   computed: {
     ...mapState(useModelStore, ['hiddenClass']),
-    ...mapWritableState(useModelStore, ['isOpen'])
+    ...mapWritableState(useModelStore, {
+      modalVisibility: 'isOpen'
+    })
   }
 }
 </script>

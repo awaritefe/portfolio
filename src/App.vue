@@ -9,9 +9,11 @@
   <app-hero />
 
   <!-- About - Make into a timeline carsousel -->
-
+  
   <!-- Media / Portfolio -->
   <app-portfolio />
+
+  <!-- Contact form -->
 </template>
 
 <script>
