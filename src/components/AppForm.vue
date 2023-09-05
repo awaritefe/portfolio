@@ -1,5 +1,5 @@
 <template>
-  <div class="md:container md:mx-auto p-12 my-12 bg-cover bg-[url('./images/bg2.jpg')]">
+  <div class="md:container md:mx-auto p-12 my-12 bg-cover bg-[url('./images/bg4.jpg')]">
     <h2 class="pb-6">Get in contact with Daniel</h2>
     <form class="grid gap-6 w-3/5">
       <div class="form-group flex gap-4">
