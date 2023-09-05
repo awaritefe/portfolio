@@ -1,5 +1,5 @@
 <template>
-  <div id="modal" class="bg-black/70 fixed h-screen pt-12 w-full top-0" :class="hiddenClass">
+  <div id="modal" class="bg-black/70 fixed h-screen pt-12 w-full top-0 z-50" :class="hiddenClass">
     <div class="modal-content m-auto w-fit">
       <!-- Modal close button -->
       <div class="modal-close cursor-pointer ml-auto w-fit z-50">
