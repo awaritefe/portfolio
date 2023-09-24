@@ -1,5 +1,5 @@
 <template>
-  <div v-show="isActive">
+  <div class="p-8 bg-white/[.6]" v-show="isActive">
     <slot />
   </div>
 </template>
