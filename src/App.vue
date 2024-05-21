@@ -8,6 +8,9 @@
   <!-- Hero -->
   <app-hero />
 
+  <!-- Item | Cards with hover effect-->
+  <app-item />
+
   <!-- About - Tabs -->
   <tabs>
     <tab title="Tab 1">Hello From Tab 1</tab>
@@ -31,6 +34,7 @@ import AppCard from '@/components/AppCard.vue'
 import AppForm from '@/components/AppForm.vue'
 import Tab from '@/components/Tab.vue'
 import Tabs from '@/components/Tabs.vue'
+import AppItem from '@/components/AppItem.vue'
 
 export default {
   Name: 'App',
@@ -41,7 +45,8 @@ export default {
     AppCard,
     AppForm,
     Tab,
-    Tabs
+    Tabs,
+    AppItem
   }
 }
 </script>
