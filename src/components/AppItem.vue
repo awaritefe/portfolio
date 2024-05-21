@@ -1,5 +1,5 @@
 <template>
-  <main class="main flow">
+  <main class="main flow md:container md:mx-auto">
     <h1 class="main__heading">Pricing</h1>
     <div class="main__items items" ref="itemsContainer">
       <div class="main__inner">
@@ -9,13 +9,21 @@
           class="items__card item"
           ref="itemElements"
           @mousemove="applyOverlayMask($event, index)"
+          @mouseleave="resetOverlayMask"
         >
           <h2 class="item__heading">{{ item.heading }}</h2>
           <p class="item__price">{{ item.price }}</p>
           <ul role="list" class="item__bullets flow">
             <li v-for="(bullet, bIndex) in item.bullets" :key="bIndex">{{ bullet }}</li>
           </ul>
-          <a :href="item.link" class="item__cta cta" :data-index="index">{{ item.cta }}</a>
+          <a
+            :href="item.link"
+            class="item__cta cta"
+            :data-index="index"
+            @mousemove="applyOverlayMask($event, index)"
+            @mouseleave="resetOverlayMask"
+            >{{ item.cta }}</a
+          >
         </div>
       </div>
       <div class="overlay main__inner" :style="overlayStyle" ref="overlay">
@@ -78,13 +86,10 @@ export default {
     }
   },
   mounted() {
-    // Call the updateOverlayItems method when the component is mounted
     this.updateOverlayItems()
-    // Listen for window resize events and update overlay items accordingly
     window.addEventListener('resize', this.updateOverlayItems)
   },
-  unmounted() {
-    // Remove the window resize event listener when the component is destroyed
+  beforeUnmount() {
     window.removeEventListener('resize', this.updateOverlayItems)
   },
   methods: {
@@ -94,23 +99,22 @@ export default {
       const x = event.clientX - overlayRect.left
       const y = event.clientY - overlayRect.top
 
-      this.overlayStyle.opacity = 1
-      this.overlayStyle['--x'] = `${x}px`
-      this.overlayStyle['--y'] = `${y}px`
-
-      // Update overlay item dimensions and position
-      this.updateOverlayItems(x, y, index)
+      this.overlayStyle = {
+        opacity: 1,
+        '--x': `${x}px`,
+        '--y': `${y}px`
+      }
+    },
+    resetOverlayMask() {
+      this.overlayStyle.opacity = 0
     },
     updateOverlayItems() {
       const overlayEl = this.$refs.overlay
       const overlayRect = overlayEl.getBoundingClientRect()
-
-      // Loop through each overlay item
-      const overlayItems = this.$refs.overlay.children
-      for (let i = 0; i < overlayItems.length; i++) {
-        overlayItems[i].style.width = `${overlayRect.width}px`
-        overlayItems[i].style.height = `${overlayRect.height}px`
-      }
+      Array.from(this.$refs.overlay.children).forEach((item) => {
+        item.style.width = `${overlayRect.width}px`
+        item.style.height = `${overlayRect.height}px`
+      })
     }
   }
 }
@@ -128,7 +132,7 @@ export default {
   &__inner {
     display: flex;
     flex-wrap: wrap;
-    gap: 2.5em;
+    gap: 1.5em;
   }
 
   .items {
@@ -202,6 +206,7 @@ export default {
         border-radius: 10px;
         font-size: 1rem;
         font-weight: 600;
+        position: relative;
       }
     }
   }
@@ -230,22 +235,16 @@ export default {
     box-shadow: 0 0 0 1px inset hsl(var(--hsl));
   }
 
-  .overlay .cta {
-    display: block;
-    grid-row: -1;
-    width: 100%;
-    background-color: hsl(var(--hsl));
-    box-shadow: 0 0 0 1px hsl(var(--hsl));
+  .cta {
+    &:hover {
+      background-color: hsla(var(--hsl), 1);
+      box-shadow: 0 0 0 1px hsl(var(--hsl));
+    }
   }
 
   :not(.overlay) > .item {
     transition: 0.4s background ease;
     will-change: background;
-  }
-
-  :not(.overlay) > .item:hover {
-    --lightness: 95%;
-    background: hsla(var(--hsl), 0.1);
   }
 }
 </style>

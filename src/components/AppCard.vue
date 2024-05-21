@@ -1,6 +1,6 @@
 <template>
   <!-- Media / Portfolio -->
-  <div class="card-container grid grid-cols-2 xl:container xl:mx-auto">
+  <div class="card-container grid grid-cols-2 md:container md:mx-auto">
     <div class="card aspect-square relative">
       <picture class="card-image absolute top-0 left-0 w-auto">
         <img
